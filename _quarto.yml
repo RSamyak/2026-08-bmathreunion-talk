@@ -1,0 +1,22 @@
+project:
+  title: "B Math Reunion Talk"
+  output-dir: _output
+
+# One self-contained reveal.js deck. Render with: quarto render slides.qmd
+format:
+  revealjs:
+    theme: [default, theme.scss]
+    width: 1280
+    height: 720
+    slide-number: c/t
+    show-slide-number: all
+    progress: true
+    history: true
+    menu: true
+    overview: true
+    embed-resources: true       # one self-contained .html you can present from any browser
+    auto-stretch: false         # don't auto-add r-stretch to images (it distorts aspect ratio)
+    pdf-separate-fragments: true  # PDF export: each fragment/click is its own page (beamer-style)
+    highlight-style: github
+    fig-align: center
+    link-external-newwindow: true

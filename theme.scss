@@ -1,0 +1,713 @@
+/*-- scss:defaults --*/
+
+// Fonts: system sans for body, monospace for code. No web fetch required.
+$font-family-sans-serif: "Helvetica Neue", "Segoe UI", Arial, sans-serif !default;
+$font-family-monospace: "SF Mono", "Menlo", "Consolas", monospace !default;
+$presentation-font-size-root: 30px;
+$presentation-line-height: 1.35;
+
+// Palette
+$body-bg: #ffffff;
+$body-color: #1b1f2a;
+$link-color: #0b6e99;
+$link-color-hover: #094f6e;
+$selection-bg: #cfe8f2;
+
+// Headings
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: #16213e;
+$presentation-heading-font-weight: 700;
+$presentation-h1-font-size: 1.9em;
+$presentation-h2-font-size: 1.3em;
+$presentation-h3-font-size: 1.05em;
+
+// Accent used for emphasis throughout the course
+$accent: #c1452b;     // warm red, used to flag "what's wrong?" moments
+$accent-2: #0b6e99;   // blue, used for the corrected / good version
+
+/*-- scss:rules --*/
+
+.reveal .slide-number {
+  background-color: transparent;
+  color: #8a8f9a;
+  font-size: 0.5em;
+}
+
+// Section title slides
+.reveal section.title-slide h1 { color: $presentation-heading-color; }
+
+// A light divider under H2 for visual structure
+.reveal h2 {
+  border-bottom: 2px solid #e3e6ec;
+  padding-bottom: 0.15em;
+}
+// Slides that use an empty heading (photo / matrix slides) shouldn't show the rule
+.reveal h2:empty { display: none; }
+
+// --- regular content slides: title at top, body vertically centred ---
+// Print-safe centring: reveal's ?print-pdf forces each section to inline
+// `display:block`, killing any flex/grid centring. So we DON'T centre via the
+// section; instead the body lives in an absolutely-positioned `.cbody` wrapper.
+// Absolute positioning is honoured in both screen and print (the section /
+// .pdf-page is full slide height in both), so HTML and PDF match exactly.
+.reveal section.content > h2 {
+  margin: 0 0 0.7em;
+}
+.reveal section.content .cbody {
+  position: absolute;
+  top: 52%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.reveal section.content .cbody ul,
+.reveal section.content .cbody ol {
+  margin-left: 1.4em;
+  line-height: 1.7;
+}
+.reveal section.content .cbody li { margin: 0.68em 0; }
+// clearer nesting for sub-list items (tighter spacing between them)
+.reveal section.content .cbody ul ul {
+  margin-left: 1.6em;
+  margin-top: 0.4em;
+}
+.reveal section.content .cbody ul ul li { margin: 0.3em 0; }
+// centred summary line(s) below a content list
+.reveal section.content .cbody .below-note {
+  display: block;
+  text-align: center;
+  margin-top: 1.1em;
+  font-style: italic;
+  color: #5b626e;
+  font-size: 0.9em;
+}
+// a second stacked note line sits right under the first
+.reveal section.content .cbody .below-note + .below-note {
+  margin-top: 0.15em;
+}
+// plain proposition slide (no tint / no corner label)
+.reveal section.propslide .cbody { padding: 0 10%; text-align: left; }
+.reveal section.propslide .cbody > p:first-child { font-weight: 700; margin: 0 0 0.5em; }
+.reveal section.propslide .cbody p { margin: 0.3em 0; line-height: 1.45; }
+// optional centred heading near the top of a content slide
+.reveal section.content .chead {
+  position: absolute;
+  top: 13%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #16213e;
+}
+
+// title slides: stack the two meta lines (name / venue + date) vertically
+.reveal .quarto-title-authors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1em;
+}
+.reveal .quarto-title-author { width: auto; }
+
+// caption overlaid on full-bleed photo slides
+.reveal .photo-caption {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 19, 24, 0.72);
+  color: #ffffff;
+  padding: 0.28em 0.9em;
+  border-radius: 8px;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+// replicated title slide (2nd one after the photos) — match the default title look
+.reveal section.title-repeat { text-align: center; }
+// the musings read as a sentence, so size it down from the big talk-title size
+.reveal section.title-repeat h1.title {
+  font-size: 1.35em;
+  line-height: 1.3;
+}
+
+// disclaimer closing line (no bullet, italic, offset)
+.reveal .disclaimer-outro {
+  display: block;
+  margin-top: 0.9em;
+  color: #6b7280;
+}
+
+// Helper classes for the deliberately-wrong / corrected motif used in critique slides.
+// Usage in qmd:  ::: {.wrong} ... :::   and   ::: {.right} ... :::
+.reveal .wrong {
+  border: 2px solid rgba($accent, 0.5);
+  border-left: 8px solid $accent;
+  background: #fbeeea;
+  padding: 0.55em 0.85em 0.55em 2.75em;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba($accent, 0.1);
+}
+.reveal .wrong::before {
+  content: "✗";
+  position: absolute;
+  left: 0.55em;
+  top: 0.42em;
+  font-size: 1.35em;
+  font-weight: 800;
+  color: $accent;
+  line-height: 1;
+}
+.reveal .wrong::after {
+  content: "Not this";
+  position: absolute;
+  top: 0.3em;
+  right: 0.65em;
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $accent;
+  opacity: 0.9;
+}
+.reveal .right {
+  border: 2px solid rgba($accent-2, 0.45);
+  border-left: 8px solid $accent-2;
+  background: #e9f3f8;
+  padding: 0.55em 0.85em 0.55em 2.75em;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba($accent-2, 0.1);
+}
+.reveal .right::before {
+  content: "✓";
+  position: absolute;
+  left: 0.55em;
+  top: 0.42em;
+  font-size: 1.35em;
+  font-weight: 800;
+  color: $accent-2;
+  line-height: 1;
+}
+.reveal .right::after {
+  content: "Do this";
+  position: absolute;
+  top: 0.3em;
+  right: 0.65em;
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $accent-2;
+  opacity: 0.9;
+}
+
+// Gallery good exhibits — balanced critique panels
+.reveal .gets-right {
+  border: 2px solid rgba($accent-2, 0.45);
+  border-left: 8px solid $accent-2;
+  background: #e9f3f8;
+  padding: 0.55em 0.85em 0.55em 2.75em;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba($accent-2, 0.1);
+}
+.reveal .gets-right::before {
+  content: "✓";
+  position: absolute;
+  left: 0.55em;
+  top: 0.42em;
+  font-size: 1.35em;
+  font-weight: 800;
+  color: $accent-2;
+  line-height: 1;
+}
+.reveal .gets-right::after {
+  content: "Gets right";
+  position: absolute;
+  top: 0.3em;
+  right: 0.65em;
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $accent-2;
+  opacity: 0.9;
+}
+.reveal .still-fix {
+  border: 2px solid rgba($accent, 0.5);
+  border-left: 8px solid $accent;
+  background: #fbeeea;
+  padding: 0.55em 0.85em 0.55em 2.75em;
+  border-radius: 6px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba($accent, 0.1);
+}
+.reveal .still-fix::before {
+  content: "!";
+  position: absolute;
+  left: 0.62em;
+  top: 0.38em;
+  font-size: 1.35em;
+  font-weight: 800;
+  color: $accent;
+  line-height: 1;
+}
+.reveal .still-fix::after {
+  content: "Still fix";
+  position: absolute;
+  top: 0.3em;
+  right: 0.65em;
+  font-size: 0.42em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $accent;
+  opacity: 0.9;
+}
+
+// Discussion-prompt callout. Usage: ::: {.prompt} Question... :::
+.reveal .prompt {
+  background: #fff7e0;
+  border: 1px dashed #d8a800;
+  border-radius: 6px;
+  padding: 0.5em 0.9em;
+  color: #1b1f2a;
+}
+
+// Callouts keep light fills — override dark-slide white text
+.reveal section.has-dark-background .prompt,
+.reveal section.has-dark-background .prompt strong,
+.reveal section.has-dark-background .wrong,
+.reveal section.has-dark-background .wrong strong,
+.reveal section.has-dark-background .right,
+.reveal section.has-dark-background .right strong,
+.reveal section.has-dark-background .gets-right,
+.reveal section.has-dark-background .gets-right strong,
+.reveal section.has-dark-background .still-fix,
+.reveal section.has-dark-background .still-fix strong {
+  color: #1b1f2a;
+}
+.reveal section.has-dark-background .wrong::before,
+.reveal section.has-dark-background .wrong::after,
+.reveal section.has-dark-background .still-fix::before,
+.reveal section.has-dark-background .still-fix::after {
+  color: $accent;
+}
+.reveal section.has-dark-background .right::before,
+.reveal section.has-dark-background .right::after,
+.reveal section.has-dark-background .gets-right::before,
+.reveal section.has-dark-background .gets-right::after {
+  color: $accent-2;
+}
+
+// Tighten code blocks a touch so live code fits on a slide
+.reveal pre code { font-size: 0.62em; line-height: 1.25; }
+
+// Smaller footnote-style text. Usage: [text]{.tiny}
+.reveal .tiny { font-size: 0.6em; color: #6b7280; }
+
+// Leadership vs Peers compare slide — tight fragment lists (avoid one-ul-per-bullet gaps)
+.reveal .audience-compare {
+  font-size: 0.92em;
+  line-height: 1.28;
+}
+.reveal .audience-compare .columns {
+  align-items: flex-start;
+}
+.reveal .audience-compare .column > p {
+  margin: 0.2em 0;
+}
+.reveal .audience-compare ul {
+  margin: 0.15em 0 0.45em 1.05em;
+  padding: 0;
+}
+.reveal .audience-compare li {
+  margin: 0.12em 0;
+  line-height: 1.25;
+}
+.reveal .audience-compare li.fragment {
+  // keep list markers; hide only until revealed via reveal's own opacity
+  margin: 0.12em 0;
+}
+.reveal .audience-compare .fragment.tiny {
+  margin-top: 0.35em;
+}
+
+// Dark section-divider slides: force light text (reveal auto-adds .has-dark-background).
+// Without this, the navy heading colour sits on the navy background and vanishes.
+.reveal section.has-dark-background h1,
+.reveal section.has-dark-background h2,
+.reveal section.has-dark-background h3,
+.reveal section.has-dark-background p,
+.reveal section.has-dark-background li,
+.reveal section.has-dark-background strong { color: #ffffff; }
+.reveal section.has-dark-background h2 { border-bottom-color: rgba(255,255,255,0.35); }
+
+// --- Q2D pipeline ribbon (chevron "process flow") --------------------
+// Usage: a <div class="pipeline"> with six <div class="step sN"> children.
+.reveal .pipeline {
+  display: flex;
+  width: 100%;
+  margin: 0.8em 0 0.5em;
+}
+.reveal .pipeline .step {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  min-height: 2.9em;
+  padding: 0.5em 0.4em 0.5em 1.05em;
+  margin-left: -18px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.62em;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
+  filter: drop-shadow(0 2px 4px rgba(22, 33, 62, 0.22));
+}
+.reveal .pipeline .step:first-child {
+  margin-left: 0;
+  padding-left: 0.7em;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%);
+}
+.reveal .pipeline .step .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  font-size: 0.85em;
+}
+.reveal .pipeline .step .lbl { white-space: nowrap; }
+.reveal .pipeline .step:nth-child(1) { z-index: 6; }
+.reveal .pipeline .step:nth-child(2) { z-index: 5; }
+.reveal .pipeline .step:nth-child(3) { z-index: 4; }
+.reveal .pipeline .step:nth-child(4) { z-index: 3; }
+.reveal .pipeline .step:nth-child(5) { z-index: 2; }
+.reveal .pipeline .step:nth-child(6) { z-index: 1; }
+// blue -> violet -> red ramp, bridging the two brand accents
+.reveal .pipeline .s1 { background: #0b6e99; }
+.reveal .pipeline .s2 { background: #4c5f9b; }
+.reveal .pipeline .s3 { background: #7b5293; }
+.reveal .pipeline .s4 { background: #a04a7f; }
+.reveal .pipeline .s5 { background: #b8476a; }
+.reveal .pipeline .s6 { background: #c1452b; }
+.reveal .pipeline-loop {
+  text-align: center;
+  color: #8a8f9a;
+  font-size: 0.62em;
+  font-style: italic;
+  margin: 0.1em 0 0.7em;
+}
+.reveal .stage-q {
+  text-align: center;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #16213e;
+}
+
+// Tall figures (scorecards, dashboards) — cap height on 720p slides
+.reveal img.fit-slide,
+.reveal section[id^="reference-scorecard"] img {
+  display: block;
+  margin: 0.25em auto;
+  max-width: 88% !important;
+  max-height: 446px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+// Session 13 gallery — exhibit on screen; title/credit minimal
+.reveal section.gallery-slide > h2 {
+  display: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+.reveal section.gallery-slide .wrong,
+.reveal section.gallery-slide .right,
+.reveal section.gallery-slide .gets-right,
+.reveal section.gallery-slide .still-fix {
+  font-size: 0.82em;
+  margin-bottom: 0.35em;
+}
+.reveal section.gallery-slide .gallery-critique {
+  margin-bottom: 0.35em;
+}
+.reveal section.gallery-slide .gallery-critique .columns {
+  align-items: stretch;
+}
+.reveal section.gallery-slide .gallery-critique .column > .gets-right,
+.reveal section.gallery-slide .gallery-critique .column > .still-fix,
+.reveal section.gallery-slide .columns .column > .gets-right,
+.reveal section.gallery-slide .columns .column > .still-fix {
+  margin-bottom: 0.25em;
+}
+// Paired anonymous crops — left/right under one callout
+.reveal section.gallery-slide .columns {
+  margin-top: 0.1em;
+  align-items: flex-start;
+}
+.reveal section.gallery-slide .columns .column img.fit-slide {
+  max-width: 100% !important;
+  max-height: 403px !important;
+  margin: 0.1em auto;
+}
+.reveal .gallery-credit {
+  display: block;
+  text-align: right;
+  margin-top: 0.3em;
+  font-size: 0.52em;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+// ============================================================
+// Talk 2x2 matrix + per-section colour system
+// ------------------------------------------------------------
+// Quadrant / section colours:
+//   Q1 / §1  Taught + Useful        -> green
+//   Q2 / §2  Not taught + (Needed)  -> blue
+//   Q3 / §3  Taught + (Harmful)     -> red
+//   Q4       irrelevant             -> grey
+// ============================================================
+
+// --- the grid component (large on intro, .mini on section headers) ---
+.reveal .matrix {
+  display: grid;
+  grid-template-columns: 1fr 2.1fr 2.1fr;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 12px;
+  width: 74%;
+  height: 432px;
+  margin: 0.5em auto;
+  font-size: 0.8em;
+}
+.reveal .matrix.mini {
+  width: 54%;
+  height: 288px;
+  gap: 8px;
+  font-size: 0.62em;
+  margin: 0.6em auto 0;
+}
+.reveal .matrix .mx-corner { grid-column: 1; grid-row: 1; }
+.reveal .matrix .mx-h {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  color: #16213e;
+  letter-spacing: 0.01em;
+}
+.reveal .matrix .mx-row { font-size: 0.9em; }
+.reveal .matrix .q {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 12px;
+  padding: 0.5em;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(22, 33, 62, 0.18);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.reveal .matrix .q1 { background: #2e8b6b; }
+.reveal .matrix .q2 { background: #0b6e99; }
+.reveal .matrix .q3 { background: #c1452b; }
+.reveal .matrix .q4 {
+  background: #eef0f3;
+  color: #aab0bb;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px #e0e3e9;
+}
+
+// highlight one quadrant (used on section-header callbacks): dim the rest
+.reveal .matrix[class*="hl"] .q { opacity: 0.32; filter: grayscale(0.25); }
+.reveal .matrix.hl1 .q1,
+.reveal .matrix.hl2 .q2,
+.reveal .matrix.hl3 .q3 {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.04);
+  outline: 4px solid #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+// on dark section-header backgrounds, axis labels must go light
+.reveal section.has-dark-background .matrix .mx-h { color: #ffffff; }
+
+// section-header (divider) slides: no title, no axis labels — the highlighted
+// quadrant alone names the section. The matrix drops its label tracks to a plain
+// 2x2 grid, sized to match the intro matrix, centred on the slide.
+.reveal section.sechead h2 { display: none; }
+.reveal section.sechead .matrix {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+// larger label inside the highlighted (named) quadrant
+.reveal section.sechead .matrix.hl1 .q1,
+.reveal section.sechead .matrix.hl2 .q2,
+.reveal section.sechead .matrix.hl3 .q3 {
+  font-size: 1.5em;
+}
+
+// --- per-section content slides: tinted background + corner label ---
+// Set the tint via the slide attribute, e.g. {background-color="#e9f5ef" .sec1}
+.reveal section.sec1::after,
+.reveal section.sec2::after,
+.reveal section.sec3::after {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  font-size: 0.58em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  padding: 5px 16px;
+  border-radius: 999px;
+}
+.reveal section.sec1::after { content: "Taught · Useful"; background: #2e8b6b; }
+.reveal section.sec2::after { content: "Not taught · Needed"; background: #0b6e99; }
+.reveal section.sec3::after { content: "Taught · Harmful"; background: #c1452b; }
+
+// --- takeaway: three columns, one per section ---
+.reveal .takeaway { display: flex; gap: 1.2em; margin-top: 0.4em; }
+.reveal .takeaway .col {
+  flex: 1 1 0;
+  border-top: 6px solid #ccc;
+  padding-top: 0.5em;
+  font-size: 0.92em;
+}
+.reveal .takeaway .col.c1 { border-color: #2e8b6b; }
+.reveal .takeaway .col.c2 { border-color: #0b6e99; }
+.reveal .takeaway .col.c3 { border-color: #c1452b; }
+.reveal .takeaway .col .col-title {
+  display: block;
+  font-weight: 700;
+  font-size: 1.08em;
+  margin: 0 0 0.4em;
+}
+.reveal .takeaway .col.c1 .col-title { color: #2e8b6b; }
+.reveal .takeaway .col.c2 .col-title { color: #0b6e99; }
+.reveal .takeaway .col.c3 .col-title { color: #c1452b; }
+.reveal .takeaway .col ul { margin: 0; padding-left: 1.05em; }
+.reveal .takeaway .col li { margin: 0.32em 0; line-height: 1.3; }
+
+// --- takeaway slide: thank-you + contact + QR header block, and a footnote ---
+.reveal .thanks-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+  margin: 0 0 0.7em;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid #e3e6ec;
+}
+.reveal .thanks-text { text-align: left; }
+// two independent lines; the contact line is the more important one
+.reveal .thanks-line {
+  display: block;
+  font-size: 0.82em;
+  font-weight: 600;
+  color: #16213e;
+  line-height: 1.3;
+}
+.reveal .contact-line {
+  display: block;
+  margin-top: 0.55em;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #16213e;
+  line-height: 1.3;
+}
+.reveal .thanks-qr-block {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reveal .thanks-qr-block p { margin: 0; }
+.reveal .qr-label {
+  display: block;
+  margin-bottom: 0.1em;
+  font-size: 0.55em;
+  color: #5b626e;
+}
+.reveal img.thanks-qr {
+  width: 130px;
+  height: 130px;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+.reveal .tk-footnote {
+  position: absolute;
+  bottom: 3.5%;
+  left: 0;
+  right: 0;
+  font-size: 0.72em;
+  font-style: italic;
+  color: #8a8f9a;
+  text-align: left;
+}
+
+// --- in-memoriam slide: sober, centred ---
+// Print-safe: pure block flow (no absolute / transform / vh). A tuned
+// padding-top drops the fixed-height block to roughly slide-centre, so it
+// renders identically on screen and in the exported PDF.
+.reveal section.memoriam {
+  text-align: center;
+  padding-top: 90px;
+}
+.reveal section.memoriam .memoriam-title {
+  display: block;
+  margin: 0 0 1.5em;
+  font-size: 0.8em;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #8a8f9a;
+  font-weight: 600;
+}
+.reveal section.memoriam img.memoriam-photo {
+  display: block;
+  margin: 0 auto 0.5em;
+  max-height: 360px;
+  width: auto;
+  border-radius: 4px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.18);
+}
+.reveal section.memoriam .memoriam-name {
+  display: block;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: #16213e;
+}
+.reveal section.memoriam .memoriam-dates {
+  display: block;
+  font-size: 0.7em;
+  color: #8a8f9a;
+  margin-top: 0.2em;
+}

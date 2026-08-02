@@ -1,0 +1,282 @@
+---
+title: "Industry Skills I Learnt and Didn't Learn<br>in B Math"
+author:
+  - "R Samyak &middot; B Math 2015&ndash;18"
+  - "B Math Quarter Century Mathematical Assembly &middot; 2 Aug 2026"
+---
+
+## {background-image="images/batch01.JPG" background-size="contain" background-color="#111318"}
+
+[B Math 2015-18]{.photo-caption}
+
+## {background-image="images/batch02.JPG" background-size="contain" background-color="#111318"}
+
+[Chaos 2016]{.photo-caption}
+
+## {background-image="images/batch03.JPG" background-size="contain" background-color="#111318"}
+
+[Chaos 2016]{.photo-caption}
+
+## {background-image="images/batch04.JPG" background-size="contain" background-color="#111318"}
+
+[Scavenger Hunt 2015]{.photo-caption}
+
+## {background-image="images/batch05.JPG" background-size="contain" background-color="#111318"}
+
+[Chaos 2017]{.photo-caption}
+
+## {.memoriam}
+
+[In Memoriam]{.memoriam-title}
+
+![](images/danny.JPG){.memoriam-photo}
+
+[Indrayudh "Danny" Roy]{.memoriam-name}
+
+[(1996&ndash;2019)]{.memoriam-dates}
+
+## {.center .title-repeat}
+
+<h1 class="title">Some musings from my journey<br>from the protected garden of B Math<br>to the jungle of real life</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">R Samyak &middot; B Math 2015&ndash;18</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">B Math Quarter Century Mathematical Assembly &middot; 2 Aug 2026</div>
+</div>
+</div>
+
+## Disclaimer {.content}
+
+::: {.cbody}
+::: {.incremental}
+- These are opinions. Please disagree.
+- I exaggerate for effect.
+    - Please assume that there is an $\epsilon$-error in every statement I make
+    - _... but trust me, I have a point._
+- Slides entirely AI generated—but any em-dashes are my own!
+:::
+:::
+
+## {.center}
+
+<div class="matrix">
+  <div class="mx-corner"></div>
+  <div class="mx-h mx-col fragment" data-fragment-index="1">Useful</div>
+  <div class="mx-h mx-col fragment" data-fragment-index="1">Not useful</div>
+  <div class="mx-h mx-row fragment" data-fragment-index="1">Taught<br>in B Math</div>
+  <div class="q q1 fragment" data-fragment-index="2">Taught<br>+ Useful</div>
+  <div class="q q3 fragment" data-fragment-index="2">Taught<br>+ Not useful</div>
+  <div class="mx-h mx-row fragment" data-fragment-index="1">Not taught<br>in B Math</div>
+  <div class="q q2 fragment" data-fragment-index="2">Not taught<br>+ Useful</div>
+  <div class="q q4 fragment" data-fragment-index="2">&mdash;</div>
+</div>
+
+## Taught + Useful {background-color="#2e8b6b" .sechead}
+
+<div class="matrix hl1">
+  <div class="q q1">Taught<br>+ Useful</div>
+  <div class="q q3">Taught<br>+ Not useful</div>
+  <div class="q q2">Not taught<br>+ Useful</div>
+  <div class="q q4">&mdash;</div>
+</div>
+
+## {.content background-color="#d6ebe0" .sec1}
+
+<!-- point 1a -->
+::: {.cbody}
+::: {.incremental}
+- Thirst for correctness
+- Modular problem solving
+- Ability to think deeply
+- Raw math skills and knowledge
+:::
+
+[Rigour]{.fragment .below-note}
+[more or less obvious]{.fragment .below-note}
+:::
+
+## {.content background-color="#d6ebe0" .sec1}
+
+<!-- point 1b -->
+::: {.cbody}
+::: {.incremental}
+- Used to being wrong---so okay to change mind
+- welcome others who challenge thought process, definitely not offended
+    - This is not common.
+    - Parents, schoolmates, PhD mates, office mates all get upset
+    - B Math folks don't
+:::
+
+[Detach self / ego from content of argument]{.fragment .below-note}
+:::
+
+## Not taught + Needed {background-color="#0b6e99" .sechead}
+
+<div class="matrix hl2">
+  <div class="q q1">Taught<br>+ Useful</div>
+  <div class="q q3">Taught<br>+ Not useful</div>
+  <div class="q q2">Not taught<br>+ Needed</div>
+  <div class="q q4">&mdash;</div>
+</div>
+
+## {.content background-color="#d2e6f1" .sec2}
+
+<!-- point 2a: takeaway = "Communication, sales" -->
+::: {.cbody}
+::: {.incremental}
+- How to sell your work
+- Correctness $\neq$ precision
+    - Omit needless words
+    - people (or AI models) forget context
+- Tailor what you say based on audience
+    - one slide output for leadership $\neq$ detailed proof for a peer
+:::
+:::
+
+## {.content background-color="#d2e6f1" .sec2}
+
+<!-- point 2b: takeaway = "Decent + quick > Perfect + very slow" -->
+::: {.cbody}
+::: {.incremental}
+- Let perfect not be an enemy of the good
+    - When is incorrect good enough?
+- Tradeoff of correctness vs speed and delivery
+    - bird in hand worth two in bush
+    - chicken in hand worth peacock in bush
+- How to not be a control freak and trust others
+:::
+
+[Decent + quick > Perfect + abysmally slow]{.fragment .below-note}
+:::
+
+## {.content background-color="#d2e6f1" .sec2}
+
+<!-- point 2c: takeaway = "Politics: convincing others" -->
+::: {.cbody}
+::: {.incremental}
+- **Politics**
+    - different people have different things they care about
+    - how to get all of them to align
+    - and align in the direction **you** want
+:::
+:::
+
+## Taught + Harmful {background-color="#c1452b" .sechead}
+
+<div class="matrix hl3">
+  <div class="q q1">Taught<br>+ Useful</div>
+  <div class="q q3">Taught<br>+ Harmful</div>
+  <div class="q q2">Not taught<br>+ Useful</div>
+  <div class="q q4">&mdash;</div>
+</div>
+
+## {.content background-color="#f4d8cf" .sec3}
+
+<!-- point 3b (i): mathematical logic; takeaway = "Universality of mathematical logic" -->
+::: {.cbody}
+::: {.incremental}
+- Mathematical logic
+    - $p \Longrightarrow q \equiv {\sim} p \lor q$
+    - _If **x**, then **y**_
+    - _Muggles think: "**x**, hence **y**" or $p \land q$_
+:::
+:::
+
+## {.content background-color="#f4d8cf" .sec3}
+
+<!-- point 3b (ii): universality -->
+::: {.cbody}
+::: {.incremental}
+- law of excluded middle
+    - just because something is not 'right' does not mean it is 'wrong'
+- there need not be only one right way
+    - एकं सत् विप्रा बहुधा वदन्ति (Rigveda Book 1, Hymn 1.164, Verse 46)
+    - _the truth is one, the wise speak it in many ways_
+    - does not mean everything is right and nothing is wrong
+:::
+
+[mathematical reasoning is not the only valid form of logic or deduction]{.fragment .below-note}
+:::
+
+## {.content background-color="#d2e6f1" .sec2}
+
+<!-- inserted: math != science; takeaway = "math != science" -->
+[Math $\neq$ science]{.chead}
+
+::: {.cbody}
+::: {.incremental}
+- In science you have a theory, and collect evidence
+    - the first evidence to the contrary: theory is 'wrong'
+- In math, you have a theorem, and you prove it
+    - there is no doubt about correctness
+    - of course, conditional on axioms etc
+:::
+
+[all models are wrong, but some are useful]{.fragment .below-note}
+:::
+
+## {.content .propslide}
+
+<!-- closing proposition + Fermat gag -->
+::: {.cbody}
+**Proposition:**
+
+[any statement applicable in real life,]{.fragment}
+
+[can be formally stated,]{.fragment}
+
+[with arbitrary precision,]{.fragment}
+
+[using a mathematically correct model,]{.fragment}
+
+[and gain agreement among people,]{.fragment}
+
+[provided all parties to the conversation have a common definition of words they all use]{.fragment}
+
+[I have discovered a truly marvelous proof of this proposition that this margin is too narrow to contain!]{.fragment .below-note}
+:::
+
+## {.takeaway-slide}
+
+::: {.thanks-block}
+::: {.thanks-text}
+[धन्यवादः &middot; ధన్యవాదాలు &middot; Thank you &middot; ধন্যবাদ]{.thanks-line}
+
+[samyak@alumni.stanford.edu<sup>*</sup> &middot; linkedin.com/in/rsamyak &middot; IG: @rsamyak97]{.contact-line}
+:::
+
+::: {.thanks-qr-block}
+[These slides]{.qr-label}
+
+![](images/slides-qr.png){.thanks-qr}
+:::
+:::
+
+::: {.takeaway}
+::: {.col .c1}
+[Taught + Useful]{.col-title}
+
+- Rigour
+- Okay to be proven wrong
+:::
+
+::: {.col .c2}
+[Not taught + Needed]{.col-title}
+
+- Communication, sales
+- Decent + quick > Perfect + very slow
+- Politics: convincing others
+- Math $\neq$ science
+:::
+
+::: {.col .c3}
+[Taught + Harmful]{.col-title}
+
+- Universality of mathematical logic
+:::
+:::
+
+[<sup>*</sup> I'd rather use samyak@alumni.isibang.ac.in, if it existed. @Alumni: please get your act together, we can make this happen, let's do it!]{.tk-footnote}
